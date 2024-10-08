@@ -1,30 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
-import AuthLayout from "../layouts/auth/Auth.layout";
-import Signin from "../pages/auth/Signin";
-import Signup from "../pages/auth/Signup";
-import App from "../App";
-import { default as MainApp } from "../pages/app/App";
+import React from "react";
+import AppLayout from "../layouts/AppLayout";
+const HomeTimeline = React.lazy(() => import("../pages/app/HomeTimeline"));
 export const router = createBrowserRouter([
   {
-    path: "/auth/",
-    element: <AuthLayout />,
+    path: "/",
+    element: <AppLayout />,
     children: [
       {
-        path: "login",
-        element: <Signin />,
-      },
-      {
-        path: "register",
-        element: <Signup />,
+        path: "",
+        element: <HomeTimeline />,
       },
     ],
-  },
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/dashboard",
-    element: <MainApp />,
   },
 ]);
